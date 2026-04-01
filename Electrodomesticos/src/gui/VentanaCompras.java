@@ -142,7 +142,6 @@ public class VentanaCompras extends JDialog implements ActionListener {
 	
 	private void registrar() {
 		 
-		// Validar campos vacios
 		if (textDocCliente.getText().equals("") ||
 			textCodigoProducto.getText().equals("") ||
 			textFCantidad.getText().equals("")) {
@@ -151,8 +150,25 @@ public class VentanaCompras extends JDialog implements ActionListener {
 			etiRes.setForeground(Color.RED);
 			return;
 		}
+
+		if (!esEnteroPositivo(textDocCliente.getText())) {
+	        etiRes.setText("El documento del cliente debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esEnteroPositivo(textCodigoProducto.getText())) {
+	        etiRes.setText("El código del producto debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esEnteroPositivo(textFCantidad.getText())) {
+	        etiRes.setText("La cantidad debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
  
-		// Buscar el cliente
 		ClientesDTO cliente = miCoordinador.consultarCliente(textDocCliente.getText());
  
 		if (cliente == null) {
@@ -160,22 +176,7 @@ public class VentanaCompras extends JDialog implements ActionListener {
 			etiRes.setForeground(Color.RED);
 			return;
 		}
-
-		// Validar que el codigo del producto sea un numero entero positivo
-		if (!esEnteroPositivo(textCodigoProducto.getText())) {
-			etiRes.setText("El codigo del producto debe ser un numero entero positivo");
-			etiRes.setForeground(Color.RED);
-			return;
-		}
- 
-		// Validar que la cantidad sea un numero entero positivo
-		if (!esEnteroPositivo(textFCantidad.getText())) {
-			etiRes.setText("La cantidad debe ser un numero entero positivo");
-			etiRes.setForeground(Color.RED);
-			return;
-		}
- 
-		// Buscar el producto 
+  
 		ProductosDTO producto = miCoordinador.consultarProducto(
 				Integer.parseInt(textCodigoProducto.getText()));
  
@@ -185,9 +186,8 @@ public class VentanaCompras extends JDialog implements ActionListener {
 			return;
 		}
  
-		// Obtener la cantidad
 		int cantidad = Integer.parseInt(textFCantidad.getText());
-		 
+
 		// validar stock
 		if (producto.getStock() <= 0) {
 			etiRes.setText("No hay más disponibles de ese producto");
@@ -200,14 +200,12 @@ public class VentanaCompras extends JDialog implements ActionListener {
 			return;
 		}
 		
-		// Calcular compra con descuento
 		double[] resultado    = miCoordinador.calcularCompra(cliente.getTipo(), producto.getPrecio(), cantidad);
 		double totalSin       = resultado[0];
 		double montoDescuento = resultado[1];
 		double totalCon       = resultado[2];
 		String textoDescuento = miCoordinador.textoDescuento(cliente.getTipo());
  
-		// Guardar compra
 		ComprasDTO compra = new ComprasDTO();
 		compra.setDocumentoCliente(cliente.getDocumento());
 		compra.setCodigoProducto(producto.getCodigo());
