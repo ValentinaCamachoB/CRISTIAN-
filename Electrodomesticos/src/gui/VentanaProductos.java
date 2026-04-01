@@ -173,6 +173,30 @@ public class VentanaProductos extends JDialog implements ActionListener {
 			etiRes.setForeground(Color.RED);
 			return;
 		}
+
+		if (!esEnteroPositivo(textCodigo.getText())) {
+	        etiRes.setText("El código debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esEnteroPositivo(textPrecio.getText())) {
+	        etiRes.setText("El precio debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esEnteroPositivo(textStockk.getText())) {
+	        etiRes.setText("El stock debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esSoloLetras(textNombre.getText())) {
+	        etiRes.setText("El nombre debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
  
 		ProductosDTO producto = new ProductosDTO();
 		producto.setCodigo(Integer.parseInt(textCodigo.getText()));
@@ -235,6 +259,30 @@ public class VentanaProductos extends JDialog implements ActionListener {
 			etiRes.setForeground(Color.RED);
 			return;
 		}
+
+		if (!esEnteroPositivo(textCodigo.getText())) {
+        etiRes.setText("El código debe ser un número entero positivo");
+        etiRes.setForeground(Color.RED);
+        return;
+    }
+    
+    if (!esEnteroPositivo(textPrecio.getText())) {
+        etiRes.setText("El precio debe ser un número entero positivo");
+        etiRes.setForeground(Color.RED);
+        return;
+    }
+    
+    if (!esEnteroPositivo(textStockk.getText())) {
+        etiRes.setText("El stock debe ser un número entero positivo");
+        etiRes.setForeground(Color.RED);
+        return;
+    }
+    
+    if (!esSoloLetras(textNombre.getText())) {
+        etiRes.setText("El nombre debe contener solo letras");
+        etiRes.setForeground(Color.RED);
+        return;
+    }
  
 		ProductosDTO producto = new ProductosDTO();
 		producto.setCodigo(Integer.parseInt(textCodigo.getText()));
@@ -301,6 +349,20 @@ public class VentanaProductos extends JDialog implements ActionListener {
 		textStockk.setText("");
 		etiRes.setText("");
 	}
-}
 
+	private boolean esEnteroPositivo(String valor) {
+		try {
+			int n = Integer.parseInt(valor.trim());
+			return n > 0;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+	
+	private boolean esSoloLetras(String valor) {
+	    if (valor.trim().isEmpty()) return false;
+	    return valor.trim().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+");
+	}
+
+}
 
