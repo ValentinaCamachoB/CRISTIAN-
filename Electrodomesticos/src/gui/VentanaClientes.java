@@ -195,6 +195,36 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			return;
 		}
 
+		if (!esEnteroPositivo(textDocumento.getText())) {
+	        etiRes.setText("El documento debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    	   
+	    if (!esEnteroPositivo(textTelefono.getText())) {
+	        etiRes.setText("El teléfono debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    	    
+	    if (!esSoloLetras(textNombre.getText())) {
+	        etiRes.setText("El nombre debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    	    
+	    if (!esSoloLetras(textApellido.getText())) {
+	        etiRes.setText("El apellido debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    	    
+	    if (!esSoloLetras(textTipo.getText())) {
+	        etiRes.setText("El tipo debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+
 		if (!esEnteroPositivo(textEdad.getText())) {
 			etiRes.setText("La edad debe ser un numero entero positivo");
 			etiRes.setForeground(Color.RED);
@@ -265,6 +295,36 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			etiRes.setForeground(Color.RED);
 			return;
 		}
+
+		if (!esEnteroPositivo(textDocumento.getText())) {
+	        etiRes.setText("El documento debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esEnteroPositivo(textTelefono.getText())) {
+	        etiRes.setText("El teléfono debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esSoloLetras(textNombre.getText())) {
+	        etiRes.setText("El nombre debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esSoloLetras(textApellido.getText())) {
+	        etiRes.setText("El apellido debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+	    
+	    if (!esSoloLetras(textTipo.getText())) {
+	        etiRes.setText("El tipo debe contener solo letras");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
 
 		if (!esEnteroPositivo(textEdad.getText())) {
 			etiRes.setText("La edad debe ser un numero entero positivo");
@@ -351,7 +411,12 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			} catch (NumberFormatException e) {
 				return false;
 			}
-		}	
+		}
+
+	    private boolean esSoloLetras(String valor) {
+		    if (valor.trim().isEmpty()) return false;
+		    return valor.trim().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+");
+		}
 	}
 	
 
