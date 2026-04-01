@@ -31,11 +31,13 @@ public class VentanaCompras extends JDialog implements ActionListener {
 	Coordinador miCoordinador;
 	
 	public VentanaCompras(VentanaPrincipal ventanaPrincipal, boolean modal) {
+		super(ventanaPrincipal, modal);
 		setBounds(100, 100, 643, 473);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		setTitle("Compras");
 		iniciarComponentes();		
 		{
@@ -155,6 +157,20 @@ public class VentanaCompras extends JDialog implements ActionListener {
  
 		if (cliente == null) {
 			etiRes.setText("No existe cliente con ese documento");
+			etiRes.setForeground(Color.RED);
+			return;
+		}
+
+		// Validar que el codigo del producto sea un numero entero positivo
+		if (!esEnteroPositivo(textCodigoProducto.getText())) {
+			etiRes.setText("El codigo del producto debe ser un numero entero positivo");
+			etiRes.setForeground(Color.RED);
+			return;
+		}
+ 
+		// Validar que la cantidad sea un numero entero positivo
+		if (!esEnteroPositivo(textFCantidad.getText())) {
+			etiRes.setText("La cantidad debe ser un numero entero positivo");
 			etiRes.setForeground(Color.RED);
 			return;
 		}
@@ -279,7 +295,7 @@ public class VentanaCompras extends JDialog implements ActionListener {
 		}
 	}
  
-	// Arma el texto de la lista para VentanaLista con todo el historial
+	// Texto de la factura
 	private String listar() {
  
 		ArrayList<ComprasDTO> lista = miCoordinador.consultarTodasLasCompras();
