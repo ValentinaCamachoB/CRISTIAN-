@@ -324,5 +324,14 @@ public class VentanaCompras extends JDialog implements ActionListener {
 		etiRes.setText("");
 		areaLista.setText("");
 	}
+
+	private boolean esEnteroPositivo(String valor) {
+		try {
+			int n = Integer.parseInt(valor.trim());
+			return n > 0;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
 }
 
