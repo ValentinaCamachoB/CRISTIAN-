@@ -238,8 +238,7 @@ public class VentanaCompras extends JDialog implements ActionListener {
 				"TOTAL A PAGAR:      $" + String.format("%.2f", totalCon)       + "\n\n" +
 				"Stock restante:     " + nuevoStock;
  
-			VentanaFactura ventanaFactura = new VentanaFactura(factura);
-			ventanaFactura.setVisible(true);
+			VVentanaFactura.mostrar(this, factura);
  
 		} else {
 			etiRes.setText("No se pudo registrar la compra");
