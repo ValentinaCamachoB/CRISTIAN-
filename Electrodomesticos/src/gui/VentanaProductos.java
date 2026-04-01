@@ -169,13 +169,7 @@ public class VentanaProductos extends JDialog implements ActionListener {
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
-		
-		if (!esSoloLetras(textNombre.getText())) {
-	        etiRes.setText("El nombre debe contener solo letras");
-	        etiRes.setForeground(Color.RED);
-	        return;
-	    }
-	    
+			    
 	    if (!esEnteroPositivo(textPrecio.getText())) {
 	        etiRes.setText("El precio debe ser un número entero positivo");
 	        etiRes.setForeground(Color.RED);
@@ -277,13 +271,7 @@ public class VentanaProductos extends JDialog implements ActionListener {
         etiRes.setForeground(Color.RED);
         return;
     }
-    
-    if (!esSoloLetras(textNombre.getText())) {
-        etiRes.setText("El nombre debe contener solo letras");
-        etiRes.setForeground(Color.RED);
-        return;
-    }
- 
+     
 		ProductosDTO producto = new ProductosDTO();
 		producto.setCodigo(Integer.parseInt(textCodigo.getText()));
 		producto.setNombre(textNombre.getText());
@@ -357,11 +345,6 @@ public class VentanaProductos extends JDialog implements ActionListener {
 		} catch (NumberFormatException e) {
 			return false;
 		}
-	}
-	
-	private boolean esSoloLetras(String valor) {
-	    if (valor.trim().isEmpty()) return false;
-	    return valor.trim().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+");
 	}
 
 }
