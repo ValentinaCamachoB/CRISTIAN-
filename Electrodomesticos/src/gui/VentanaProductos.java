@@ -164,18 +164,14 @@ public class VentanaProductos extends JDialog implements ActionListener {
 	
 	private void registrar() {
 		 
-		if (textCodigo.getText().equals("") ||
-			textNombre.getText().equals("") ||
-			textPrecio.getText().equals("") ||
-			textStockk.getText().equals("")) {
- 
-			etiRes.setText("Complete todos los campos");
-			etiRes.setForeground(Color.RED);
-			return;
-		}
-
 		if (!esEnteroPositivo(textCodigo.getText())) {
 	        etiRes.setText("El código debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
+		
+		if (!esSoloLetras(textNombre.getText())) {
+	        etiRes.setText("El nombre debe contener solo letras");
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
@@ -191,12 +187,16 @@ public class VentanaProductos extends JDialog implements ActionListener {
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
-	    
-	    if (!esSoloLetras(textNombre.getText())) {
-	        etiRes.setText("El nombre debe contener solo letras");
-	        etiRes.setForeground(Color.RED);
-	        return;
-	    }
+	    	    
+	    if (textCodigo.getText().equals("") ||
+				textNombre.getText().equals("") ||
+				textPrecio.getText().equals("") ||
+				textStockk.getText().equals("")) {
+	 
+				etiRes.setText("Complete todos los campos");
+				etiRes.setForeground(Color.RED);
+				return;
+			}
  
 		ProductosDTO producto = new ProductosDTO();
 		producto.setCodigo(Integer.parseInt(textCodigo.getText()));
