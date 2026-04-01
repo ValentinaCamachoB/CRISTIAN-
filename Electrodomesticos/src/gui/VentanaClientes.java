@@ -184,28 +184,12 @@ public class VentanaClientes extends JDialog implements ActionListener{
 	}
 	private void registrar() {
 		 
-		if (textDocumento.getText().equals("") ||
-			textNombre.getText().equals("") ||
-			textApellido.getText().equals("") ||
-			textEdad.getText().equals("") ||
-			textTelefono.getText().equals("")) {
- 
-			etiRes.setText("Complete todos los campos");
-			etiRes.setForeground(Color.RED);
-			return;
-		}
-
 		if (!esEnteroPositivo(textDocumento.getText())) {
 	        etiRes.setText("El documento debe ser un número entero positivo");
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
 	    	   
-	    if (!esEnteroPositivo(textTelefono.getText())) {
-	        etiRes.setText("El teléfono debe ser un número entero positivo");
-	        etiRes.setForeground(Color.RED);
-	        return;
-	    }
 	    	    
 	    if (!esSoloLetras(textNombre.getText())) {
 	        etiRes.setText("El nombre debe contener solo letras");
@@ -218,18 +202,36 @@ public class VentanaClientes extends JDialog implements ActionListener{
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
+	    
+	    if (!esEnteroPositivo(textEdad.getText())) {
+			etiRes.setText("La edad debe ser un numero entero positivo");
+			etiRes.setForeground(Color.RED);
+			return;
+		}
+	    
+	    if (!esEnteroPositivo(textTelefono.getText())) {
+	        etiRes.setText("El teléfono debe ser un número entero positivo");
+	        etiRes.setForeground(Color.RED);
+	        return;
+	    }
 	    	    
 	    if (!esSoloLetras(textTipo.getText())) {
 	        etiRes.setText("El tipo debe contener solo letras");
 	        etiRes.setForeground(Color.RED);
 	        return;
 	    }
-
-		if (!esEnteroPositivo(textEdad.getText())) {
-			etiRes.setText("La edad debe ser un numero entero positivo");
-			etiRes.setForeground(Color.RED);
-			return;
-		}
+		
+		
+		if (textDocumento.getText().equals("") ||
+				textNombre.getText().equals("") ||
+				textApellido.getText().equals("") ||
+				textEdad.getText().equals("") ||
+				textTelefono.getText().equals("")) {
+	 
+				etiRes.setText("Complete todos los campos");
+				etiRes.setForeground(Color.RED);
+				return;
+			}
  
 		ClientesDTO cliente = new ClientesDTO();
 		cliente.setDocumento(textDocumento.getText());
