@@ -15,6 +15,7 @@ public class VentanaFactura extends JFrame {
 		setSize(420, 380);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		setAlwaysOnTop(true);
  
 		JLabel lblTitulo = new JLabel("FACTURA DE COMPRA");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -30,5 +31,7 @@ public class VentanaFactura extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(areaFactura);
 		scrollPane.setBounds(20, 58, 370, 270);
 		getContentPane().add(scrollPane);
+
+		setVisible(true);
 	}
 }
