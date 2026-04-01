@@ -194,6 +194,12 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			etiRes.setForeground(Color.RED);
 			return;
 		}
+
+		if (!esEnteroPositivo(textEdad.getText())) {
+			etiRes.setText("La edad debe ser un numero entero positivo");
+			etiRes.setForeground(Color.RED);
+			return;
+		}
  
 		ClientesDTO cliente = new ClientesDTO();
 		cliente.setDocumento(textDocumento.getText());
@@ -256,6 +262,12 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			textTelefono.getText().equals("")) {
  
 			etiRes.setText("Complete todos los campos para actualizar");
+			etiRes.setForeground(Color.RED);
+			return;
+		}
+
+		if (!esEnteroPositivo(textEdad.getText())) {
+			etiRes.setText("La edad debe ser un numero entero positivo");
 			etiRes.setForeground(Color.RED);
 			return;
 		}
@@ -331,7 +343,15 @@ public class VentanaClientes extends JDialog implements ActionListener{
 			textTipo.setText("");
 			etiRes.setText("");
 		}
-	
+
+        private boolean esEnteroPositivo(String valor) {
+			try {
+				int n = Integer.parseInt(valor.trim());
+				return n > 0;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		}	
 	}
 	
 
