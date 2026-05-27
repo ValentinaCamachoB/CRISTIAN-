@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Aprendiz</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <header class="encabezado">
+        <div class="logo-area">
+            <span>🏛️</span>
+            <div>
+                <h1>Editar Aprendiz</h1>
+                <p>Patrón MVC · Spring Boot · SENA</p>
+            </div>
+        </div>
+        <a th:href="@{/aprendices}" class="btn btn-secundario">← Volver a la lista</a>
+    </header>
+
+    <div class="card">
+        <h2 class="card-titulo">Actualizar datos del aprendiz</h2>
+
+        <form th:action="@{/aprendices/actualizar}" th:object="${aprendiz}" method="post" class="formulario">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="fila-campos">
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input type="text" th:field="*{nombre}" required>
+                </div>
+
+                <div class="campo">
+                    <label>Correo</label>
+                    <input type="email" th:field="*{correo}" required>
+                </div>
+            </div>
+
+            <div class="fila-campos">
+                <div class="campo">
+                    <label>Ficha</label>
+                    <input type="text" th:field="*{ficha}" required>
+                </div>
+
+                <div class="campo">
+                    <label>Programa</label>
+                    <select th:field="*{programa}">
+                        <option value="Análisis y Desarrollo de Software">Análisis y Desarrollo de Software</option>
+                        <option value="Sistemas">Sistemas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display:flex; gap:0.8rem;">
+                <button type="submit" class="btn btn-primario">Actualizar</button>
+                <a th:href="@{/aprendices}" class="btn btn-secundario">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Aprendiz</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div class="contenedor">
+ 
+    <header class="encabezado">
+        <div class="logo-area">
+            <span class="icono-sena">🏛️</span>
+            <div>
+                <h1>Detalle del Aprendiz</h1>
+                <p>Patrón MVC · Spring Boot · SENA</p>
+            </div>
+        </div>
+        <a th:href="@{/aprendices}" class="btn btn-secundario">← Volver a la lista</a>
+    </header>
+ 
+    <div th:if="${aprendiz == null}" class="card">
+        <p> Aprendiz no encontrado</p>
+        <a th:href="@{/aprendices}" class="btn btn-primario" style="margin-top:1rem; display:inline-block;">Volver</a>
+    </div>
+ 
+    <div th:if="${aprendiz != null}" class="card">
+        <div class="detalle-encabezado">
+            <div class="avatar">
+                <span th:text="${#strings.substring(aprendiz.nombre, 0, 1)}">A</span>
+            </div>
+            <div>
+                <h2 th:text="${aprendiz.nombre}">Nombre</h2>
+                <span th:text="${aprendiz.estaActivo()} ? 'ACTIVO' : 'INACTIVO'"
+                      th:class="${aprendiz.estaActivo()} ? 'badge activo' : 'badge inactivo'">
+                </span>
+            </div>
+        </div>
+ 
+        <div class="detalle-info">
+            <div class="info-fila">
+                <span class="info-etiqueta">ID</span>
+                <span class="info-valor" th:text="${aprendiz.id}"></span>
+            </div>
+            <div class="info-fila">
+                <span class="info-etiqueta">Correo</span>
+                <span class="info-valor" th:text="${aprendiz.correo}"></span>
+            </div>
+            <div class="info-fila">
+                <span class="info-etiqueta">Ficha</span>
+                <span class="info-valor" th:text="${aprendiz.ficha}"></span>
+            </div>
+            <div class="info-fila">
+                <span class="info-etiqueta">Programa</span>
+                <span class="info-valor" th:text="${aprendiz.programa}"></span>
+            </div>
+            <div class="info-fila">
+                <span class="info-etiqueta">Estado</span>
+                <span class="info-valor"
+                      th:text="${aprendiz.estaActivo()} ? 'Ficha activa' : 'Ficha inactiva'">
+                </span>
+            </div>
+        </div>
+ 
+        <div class="botones-formulario" style="margin-top: 1.75rem;">
+            <a th:href="@{/aprendices}" class="btn btn-secundario">Volver a la lista</a>
+ 
+            <a th:href="@{/aprendices/cambiarEstado/{id}(id=${aprendiz.id})}"
+               th:text="${aprendiz.estaActivo()} ? 'Desactivar Aprendiz' : 'Activar Aprendiz'"
+               th:class="${aprendiz.estaActivo()} ? 'btn btn-eliminar' : 'btn btn-primario'">
+            </a>
+ 
+            <a th:href="@{/aprendices/eliminar/{id}(id=${aprendiz.id})}"
+               class="btn btn-eliminar"
+               onclick="return confirm('¿Seguro que desea eliminar este aprendiz?')">
+                Eliminar Aprendiz
+            </a>
+        </div>
+    </div>
+ 
+</div>
+
+</body>
+</html>

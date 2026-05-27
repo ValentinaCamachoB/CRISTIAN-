@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Aprendices</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div class="contenedor">
+
+<header class="encabezado">
+    <div class="logo-area">
+        <h1>Sistema de Aprendices</h1>
+    </div>
+
+    <a th:href="@{/aprendices/nuevo}" class="btn btn-primario">
+        + Registrar
+    </a>
+</header>
+
+<div class="card">
+    <h2 class="card-titulo">Lista de Aprendices</h2>
+
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Ficha</th>
+            <th>Programa</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="aprendiz : ${aprendices}">
+            <td th:text="${aprendiz.id}"></td>
+            <td th:text="${aprendiz.nombre}"></td>
+            <td th:text="${aprendiz.correo}"></td>
+            <td th:text="${aprendiz.ficha}"></td>
+            <td th:text="${aprendiz.programa}"></td>
+
+            <td>
+                <span th:text="${aprendiz.estaActivo()} ? 'ACTIVO':'INACTIVO'"
+                      th:class="${aprendiz.estaActivo()} ? 'badge activo':'badge inactivo'">
+                </span>
+            </td>
+
+            <td>
+                <div class="acciones">
+                    <a th:href="@{/aprendices/detalle/{id}(id=${aprendiz.id})}" class="btn btn-ver btn-pequeño">Ver</a>
+
+                    <a th:href="@{/aprendices/editar/{id}(id=${aprendiz.id})}" class="btn btn-primario btn-pequeño">Editar</a>
+
+                    <a th:href="@{/aprendices/eliminar/{id}(id=${aprendiz.id})}" class="btn btn-eliminar btn-pequeño">Eliminar</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+
+</body>
+</html>

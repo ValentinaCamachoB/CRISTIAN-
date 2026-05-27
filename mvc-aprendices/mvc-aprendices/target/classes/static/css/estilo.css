@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #1a56db;
+    --azul-claro: #e8f0fe;
+    --texto: #1e2a3a;
+    --texto-suave: #5a6a7e;
+    --borde: #dce3ec;
+    --fondo: #f5f7fa;
+    --blanco: #ffffff;
+    --verde: #047857;
+    --verde-claro: #d1fae5;
+    --rojo: #b91c1c;
+    --rojo-claro: #fee2e2;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+.contenedor {
+    max-width: 1350px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--texto);
+    color: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.logo-area {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    overflow-x: auto;
+}
+
+.card-titulo {
+    margin-bottom: 1rem;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tabla th,
+.tabla td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: middle;
+}
+
+.tabla th {
+    background: var(--fondo);
+}
+
+.tabla th:nth-child(1), .tabla td:nth-child(1) { width: 5%; }
+.tabla th:nth-child(2), .tabla td:nth-child(2) { width: 16%; }
+.tabla th:nth-child(3), .tabla td:nth-child(3) { width: 23%; }
+.tabla th:nth-child(4), .tabla td:nth-child(4) { width: 10%; }
+.tabla th:nth-child(5), .tabla td:nth-child(5) { width: 18%; }
+.tabla th:nth-child(6), .tabla td:nth-child(6) { width: 10%; text-align:center; }
+.tabla th:nth-child(7), .tabla td:nth-child(7) { width: 18%; text-align:center; }
+
+.badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.activo {
+    background: var(--verde-claro);
+    color: var(--verde);
+}
+
+.inactivo {
+    background: var(--rojo-claro);
+    color: var(--rojo);
+}
+
+.btn {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-primario {
+    background: var(--azul);
+    color: white;
+}
+
+.btn-secundario {
+    background: #eee;
+    color: var(--texto);
+}
+
+.btn-ver {
+    background: var(--azul-claro);
+    color: var(--azul);
+}
+
+.btn-eliminar {
+    background: var(--rojo-claro);
+    color: var(--rojo);
+}
+
+.btn-pequeño {
+    font-size: 12px;
+}
+
+.acciones {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fila-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo input,
+.campo select {
+    padding: 0.7rem;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
