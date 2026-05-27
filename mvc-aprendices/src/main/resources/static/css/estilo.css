@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #1a56db;
+    --azul-claro: #e8f0fe;
+    --texto: #1e2a3a;
+    --texto-suave: #5a6a7e;
+    --borde: #dce3ec;
+    --fondo: #f5f7fa;
+    --blanco: #ffffff;
+    --verde: #047857;
+    --verde-claro: #d1fae5;
+    --rojo: #b91c1c;
+    --rojo-claro: #fee2e2;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.contenedor {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Encabezado */
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--texto);
+    color: white;
+    padding: 1.25rem 1.75rem;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.icono-sena {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.encabezado h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.encabezado p {
+    font-size: 0.78rem;
+    opacity: 0.55;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 2px;
+}
+
+/* Tarjetas de estadísticas */
+.tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.tarjeta-stat {
+    background: var(--blanco);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--borde);
+}
+
+.stat-numero {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--texto);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.tarjeta-stat.activos .stat-numero { color: var(--verde); }
+.tarjeta-stat.inactivos .stat-numero { color: var(--rojo); }
+
+.stat-etiqueta {
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Card */
+.card {
+    background: var(--blanco);
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 1px solid var(--borde);
+}
+
+.card-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--borde);
+}
+
+.card-subtitulo {
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Tabla */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.tabla th {
+    background: var(--fondo);
+    color: var(--texto-suave);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--borde);
+}
+
+.tabla td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto);
+}
+
+.tabla tr:last-child td { border-bottom: none; }
+.tabla tr:hover td { background: var(--fondo); }
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.badge.activo { background: var(--verde-claro); color: var(--verde); }
+.badge.inactivo { background: var(--rojo-claro); color: var(--rojo); }
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s, opacity 0.15s;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.btn-primario { background: var(--azul); color: white; }
+.btn-primario:hover { opacity: 0.88; }
+
+.btn-secundario { background: var(--fondo); color: var(--texto); border: 1px solid var(--borde); }
+.btn-secundario:hover { background: var(--borde); }
+
+.btn-pequeño { padding: 0.3rem 0.7rem; font-size: 0.78rem; }
+
+.btn-ver { background: var(--azul-claro); color: var(--azul); }
+.btn-ver:hover { opacity: 0.8; }
+
+.btn-eliminar { background: var(--rojo-claro); color: var(--rojo); }
+.btn-eliminar:hover { opacity: 0.8; }
+
+.acciones { display: flex; gap: 0.4rem; }
+
+/* Estado vacío */
+.vacio {
+    text-align: center;
+    padding: 3rem;
+    color: var(--texto-suave);
+}
+.vacio p { margin-bottom: 1rem; }
+
+/* Formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.fila-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+}
+
+@media (max-width: 600px) {
+    .fila-campos { grid-template-columns: 1fr; }
+    .tarjetas-resumen { grid-template-columns: 1fr; }
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.campo label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.campo input,
+.campo select {
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--borde);
+    border-radius: 6px;
+    font-size: 0.92rem;
+    color: var(--texto);
+    background: var(--blanco);
+    outline: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: border-color 0.15s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--azul);
+}
+
+.botones-formulario {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+}
+
+/* Detalle */
+.detalle-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--borde);
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--texto);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.detalle-encabezado h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.3rem;
+}
+
+.info-fila {
+    display: flex;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--fondo);
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.info-fila:last-child { border-bottom: none; }
+
+.info-etiqueta {
+    width: 160px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.info-valor {
+    color: var(--texto);
+    font-size: 0.92rem;
+}

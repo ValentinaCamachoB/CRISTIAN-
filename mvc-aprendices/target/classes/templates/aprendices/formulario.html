@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Aprendiz</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <header class="encabezado">
+        <div class="logo-area">
+            <span class="icono-sena">🏛️</span>
+            <div>
+                <h1>Registrar Aprendiz</h1>
+                <p>Patrón MVC · Spring Boot · SENA</p>
+            </div>
+        </div>
+        <a th:href="@{/aprendices}" class="btn btn-secundario">← Volver a la lista</a>
+    </header>
+
+    <div class="card">
+        <h2 class="card-titulo">Datos del Aprendiz</h2>
+        <p class="card-subtitulo">Complete todos los campos obligatorios para registrar un nuevo aprendiz.</p>
+
+        <form th:action="@{/aprendices/guardar}" th:object="${aprendiz}" method="post" class="formulario">
+
+            <div class="fila-campos">
+                <div class="campo">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" th:field="*{nombre}"
+                           placeholder="Ej: Laura Gómez" required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico *</label>
+                    <input type="email" id="correo" th:field="*{correo}"
+                           placeholder="Ej: laura.gomez@sena.edu.co" required>
+                </div>
+            </div>
+
+            <div class="fila-campos">
+                <div class="campo">
+                    <label for="ficha">Número de Ficha *</label>
+                    <input type="text" id="ficha" th:field="*{ficha}"
+                           placeholder="Ej: 2758946" required>
+                </div>
+
+                <div class="campo">
+                    <label for="programa">Programa de Formación *</label>
+                    <select id="programa" th:field="*{programa}" required>
+                        <option value="">-- Seleccione un programa --</option>
+                        <option value="Análisis y Desarrollo de Software">Análisis y Desarrollo de Software</option>
+                        <option value="Sistemas">Sistemas</option>
+                        <option value="Diseño de Software">Diseño de Software</option>
+                        <option value="Redes y Comunicaciones">Redes y Comunicaciones</option>
+                        <option value="Multimedia">Multimedia</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="botones-formulario">
+                <button type="submit" class="btn btn-primario">Guardar Aprendiz</button>
+                <a th:href="@{/aprendices}" class="btn btn-secundario">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
