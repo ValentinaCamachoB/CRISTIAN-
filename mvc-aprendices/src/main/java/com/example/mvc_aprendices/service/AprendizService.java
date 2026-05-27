@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
  
-@Service  // Le dice a Spring que este es un componente de servicio
+@Service  
 public class AprendizService {
  
     // Simulamos la "base de datos" con una lista en memoria
