@@ -20,192 +20,93 @@
     --rojo-claro: #fee2e2;
 }
 
-/* Estilo general */
 body {
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color: var(--fondo);
+    background: var(--fondo);
     color: var(--texto);
-    line-height: 1.6;
-    font-size: 15px;
 }
 
 .contenedor {
     max-width: 1350px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    margin: auto;
+    padding: 2rem;
 }
 
-/* Encabezado */
 .encabezado {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     background: var(--texto);
     color: white;
-    padding: 1.25rem 1.75rem;
+    padding: 1.2rem;
     border-radius: 10px;
-    flex-wrap: wrap;
-    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .logo-area {
     display: flex;
-    align-items: center;
-    gap: 0.85rem;
-}
-
-.icono-sena {
-    font-size: 1.75rem;
-}
-
-.encabezado h1 {
-    font-size: 1.15rem;
-    font-weight: 600;
-}
-
-.encabezado p {
-    font-size: 0.78rem;
-    opacity: 0.55;
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-/* Tarjetas */
-.tarjetas-resumen {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    align-items: center;
 }
 
-.tarjeta-stat {
-    background: var(--blanco);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--borde);
-}
-
-.stat-numero {
-    display: block;
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.tarjeta-stat.activos .stat-numero {
-    color: var(--verde);
-}
-
-.tarjeta-stat.inactivos .stat-numero {
-    color: var(--rojo);
-}
-
-/* Card */
 .card {
-    background: var(--blanco);
-    border-radius: 8px;
-    padding: 1.75rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
     border: 1px solid var(--borde);
     overflow-x: auto;
 }
 
 .card-titulo {
-    font-size: 1rem;
-    font-weight: 600;
     margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--borde);
 }
 
-/* Tabla */
 .tabla {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-.tabla th {
-    background: var(--fondo);
-    color: var(--texto-suave);
-    font-weight: 600;
-    text-align: left;
-    padding: 0.9rem;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--borde);
-}
-
+.tabla th,
 .tabla td {
-    padding: 1rem 0.9rem;
+    padding: 1rem;
     border-bottom: 1px solid var(--borde);
     vertical-align: middle;
 }
 
-/* Tamaño de columnas */
-.tabla th:nth-child(1),
-.tabla td:nth-child(1) {
-    width: 5%;
-    text-align: center;
+.tabla th {
+    background: var(--fondo);
 }
 
-.tabla th:nth-child(2),
-.tabla td:nth-child(2) {
-    width: 16%;
-}
+.tabla th:nth-child(1), .tabla td:nth-child(1) { width: 5%; }
+.tabla th:nth-child(2), .tabla td:nth-child(2) { width: 16%; }
+.tabla th:nth-child(3), .tabla td:nth-child(3) { width: 23%; }
+.tabla th:nth-child(4), .tabla td:nth-child(4) { width: 10%; }
+.tabla th:nth-child(5), .tabla td:nth-child(5) { width: 18%; }
+.tabla th:nth-child(6), .tabla td:nth-child(6) { width: 10%; text-align:center; }
+.tabla th:nth-child(7), .tabla td:nth-child(7) { width: 18%; text-align:center; }
 
-.tabla th:nth-child(3),
-.tabla td:nth-child(3) {
-    width: 23%;
-}
-
-.tabla th:nth-child(4),
-.tabla td:nth-child(4) {
-    width: 10%;
-}
-
-.tabla th:nth-child(5),
-.tabla td:nth-child(5) {
-    width: 20%;
-}
-
-.tabla th:nth-child(6),
-.tabla td:nth-child(6) {
-    width: 11%;
-    text-align: center;
-}
-
-.tabla th:nth-child(7),
-.tabla td:nth-child(7) {
-    width: 15%;
-    text-align: center;
-}
-
-/* Estados */
 .badge {
-    display: inline-block;
     padding: 0.3rem 0.7rem;
-    border-radius: 4px;
-    font-size: 0.72rem;
-    font-weight: 600;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
-.badge.activo {
+.activo {
     background: var(--verde-claro);
     color: var(--verde);
 }
 
-.badge.inactivo {
+.inactivo {
     background: var(--rojo-claro);
     color: var(--rojo);
 }
 
-/* Botones */
 .btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 6px;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 14px;
 }
 
 .btn-primario {
@@ -214,7 +115,7 @@ body {
 }
 
 .btn-secundario {
-    background: var(--fondo);
+    background: #eee;
     color: var(--texto);
 }
 
@@ -228,14 +129,16 @@ body {
     color: var(--rojo);
 }
 
-/* Botones de acciones */
+.btn-pequeño {
+    font-size: 12px;
+}
+
 .acciones {
     display: flex;
     justify-content: center;
     gap: 0.4rem;
 }
 
-/* Formulario */
 .formulario {
     display: flex;
     flex-direction: column;
@@ -251,7 +154,6 @@ body {
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
 }
 
 .campo input,
