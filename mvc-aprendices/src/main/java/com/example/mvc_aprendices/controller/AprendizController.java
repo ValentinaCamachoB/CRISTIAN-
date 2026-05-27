@@ -58,9 +58,17 @@ public class AprendizController {
         aprendizService.eliminar(id);
         return "redirect:/aprendices";
 
+    // Cambia el estado activo inactivo
     @GetMapping("/cambiarEstado/{id}")
     public String cambiarEstado(@PathVariable int id) {
         aprendizService.cambiarEstado(id);
         return "redirect:/aprendices/detalle/" + id;
+    }
+
+    // para editar
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable int id, Model model) {
+        model.addAttribute("aprendiz", aprendizService.buscarPorId(id));
+        return "formulario";
     }
 }
