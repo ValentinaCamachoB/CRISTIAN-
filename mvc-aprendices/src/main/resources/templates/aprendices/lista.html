@@ -2,8 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Aprendices - SENA</title>
+    <title>Sistema de Aprendices</title>
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
 <body>
@@ -18,35 +17,16 @@
                 <p>Patrón MVC · Spring Boot · SENA</p>
             </div>
         </div>
+
         <a th:href="@{/aprendices/nuevo}" class="btn btn-primario">
             + Registrar Aprendiz
         </a>
     </header>
 
-    <div class="tarjetas-resumen">
-        <div class="tarjeta-stat">
-            <span class="stat-numero" th:text="${total}">0</span>
-            <span class="stat-etiqueta">Total</span>
-        </div>
-        <div class="tarjeta-stat activos">
-            <span class="stat-numero" th:text="${activos}">0</span>
-            <span class="stat-etiqueta">Activos</span>
-        </div>
-        <div class="tarjeta-stat inactivos">
-            <span class="stat-numero" th:text="${total - activos}">0</span>
-            <span class="stat-etiqueta">Inactivos</span>
-        </div>
-    </div>
-
     <div class="card">
         <h2 class="card-titulo">Lista de Aprendices</h2>
 
-        <div th:if="${#lists.isEmpty(aprendices)}" class="vacio">
-            <p>No hay aprendices registrados aún.</p>
-            <a th:href="@{/aprendices/nuevo}" class="btn btn-primario">Registrar el primero</a>
-        </div>
-
-        <table th:if="${!#lists.isEmpty(aprendices)}" class="tabla">
+        <table class="tabla">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -58,6 +38,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr th:each="aprendiz : ${aprendices}">
                     <td th:text="${aprendiz.id}"></td>
@@ -65,21 +46,28 @@
                     <td th:text="${aprendiz.correo}"></td>
                     <td th:text="${aprendiz.ficha}"></td>
                     <td th:text="${aprendiz.programa}"></td>
+
                     <td>
-                        <span th:text="${aprendiz.estado}"
+                        <span th:text="${aprendiz.estaActivo()} ? 'ACTIVO' : 'INACTIVO'"
                               th:class="${aprendiz.estaActivo()} ? 'badge activo' : 'badge inactivo'">
                         </span>
                     </td>
-                    <td class="acciones">
-                        <a th:href="@{/aprendices/detalle/{id}(id=${aprendiz.id})}"
-                           class="btn btn-pequeño btn-ver">Ver</a>
-                        <a th:href="@{/aprendices/eliminar/{id}(id=${aprendiz.id})}"
-                           class="btn btn-pequeño btn-eliminar"
-                           onclick="return confirm('¿Eliminar este aprendiz?')">Eliminar</a>
+
+                    <td>
+                        <div class="acciones">
+                            <a th:href="@{/aprendices/detalle/{id}(id=${aprendiz.id})}"
+                               class="btn btn-pequeño btn-ver">Ver</a>
+
+                            <a th:href="@{/aprendices/eliminar/{id}(id=${aprendiz.id})}"
+                               class="btn btn-pequeño btn-eliminar">
+                                Eliminar
+                            </a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 
 </div>
