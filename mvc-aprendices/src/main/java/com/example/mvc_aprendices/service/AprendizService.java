@@ -68,6 +68,20 @@ public class AprendizService {
                 .filter(Aprendiz::estaActivo)
                 .count();
     }
+
+    /**
+     *  si está ACTIVO pasa a INACTIVO, y viceversa.
+     */
+    public void cambiarEstado(int id) {
+        Aprendiz aprendiz = buscarPorId(id);
+        if (aprendiz != null) {
+            if (aprendiz.estaActivo()) {
+                aprendiz.setEstado("INACTIVO");
+            } else {
+                aprendiz.setEstado("ACTIVO");
+            }
+        }
+    }
  
     // Carga datos de ejemplo para mostrar en la aplicación
     private void cargarDatosEjemplo() {
