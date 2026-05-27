@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller  
-@RequestMapping("/aprendices")  // Todas las rutas de este controlador empiezan con /aprendices
+@RequestMapping("/aprendices")  
 public class AprendizController {
  
     @Autowired
@@ -57,5 +57,10 @@ public class AprendizController {
     public String eliminar(@PathVariable int id) {
         aprendizService.eliminar(id);
         return "redirect:/aprendices";
+
+    @GetMapping("/cambiarEstado/{id}")
+    public String cambiarEstado(@PathVariable int id) {
+        aprendizService.cambiarEstado(id);
+        return "redirect:/aprendices/detalle/" + id;
     }
 }
