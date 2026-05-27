@@ -9,7 +9,7 @@ import java.util.List;
 @Service  
 public class AprendizService {
  
-    // Simulamos la "base de datos" con una lista en memoria
+    // Simular la "base de datos" con una lista en memoria
     private List<Aprendiz> listaAprendices = new ArrayList<>();
     private int contadorId = 1;
  
