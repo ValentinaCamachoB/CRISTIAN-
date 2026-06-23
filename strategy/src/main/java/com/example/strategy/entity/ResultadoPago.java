@@ -1,10 +1,5 @@
 package com.example.strategy.entity;
 
-/**
- * Clase que representa el resultado de un pago.
- * Aunque no estamos usando base de datos, la pongo en el paquete
- * entity porque es la que representa el "objeto del negocio".
- */
 public class ResultadoPago {
 
     private boolean exitoso;
@@ -19,7 +14,6 @@ public class ResultadoPago {
         this.totalCobrado = totalCobrado;
     }
 
-    // Getters y setters (necesarios para que Spring serialice a JSON)
     public boolean isExitoso() {
         return exitoso;
     }
